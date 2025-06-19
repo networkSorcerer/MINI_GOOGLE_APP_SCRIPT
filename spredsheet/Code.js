@@ -57,14 +57,21 @@ let second = '2'
 Logger.log(first + second)
 
 
+let mailAddress = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("후원자정보").getRange(4,2).getValue();
+
+let name3 = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("후원자정보").getRange(4,3).getValue();
+
+let role3 = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("후원자정보").getRange(4,4).getValue();
+
+let mailTitle3 = name3 + ' ' + role3 + '님, 반갑습니다.';
+mailTitle3 += SpreadsheetApp.getActiveSpreadsheet().getSheetByName("이메일내용").getRange(3,3).getValue();
+
+let mailBody2 = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("이메일내용").getRange(3,4).getValue();
+
+Logger.log(mailAddress + ' ' + mailTitle3 + ' ' + mailBody2);
 
 
-
-
-
-
-
-
+MailApp.sendEmail(mailAddress, mailTitle3, mailBody2)
 
 
 
